@@ -2,7 +2,7 @@
 var GHPATH = '/realms-helper';
 
 // Choose a different app prefix name
-var APP_PREFIX = 'rehe_';
+var APP_PREFIX = 'reah_';
 
 // The version of the cache. Every time you change any of the files
 // you need to change this version (version_01, version_02…).
