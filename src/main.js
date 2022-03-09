@@ -1,5 +1,4 @@
 import App from './App.svelte';
-import interact from 'interactjs';
 
 const app = new App({
 	target: document.body,
