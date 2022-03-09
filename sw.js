@@ -21,4 +21,6 @@ var URLS = [
   `${GHPATH}/build/bundle.css`,
   `${GHPATH}/build/bundle.js`,
   `${GHPATH}/build/bundle.js.map`,
-]
+];
+
+self.addEventListener('fetch',() => console.log("fetch"));
