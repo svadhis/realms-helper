@@ -1,0 +1,10 @@
+{
+    "name": "Realms Helper",
+    "short_name": "REAH",
+    "description": "Helper for Realms card games",
+    "scope": "/realms-helper/",
+    "start_url": "/realms-helper/",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "display": "fullscreen"
+  }
