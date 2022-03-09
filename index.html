@@ -7,25 +7,22 @@
 	<title>Svelte app</title>
 
 	<link rel='icon' type='image/png' href='/favicon.png'>
-	<link rel='stylesheet' href='/app.css'>
-	<link rel='stylesheet' href='/build/bundle.css'>
+	<link rel='stylesheet' href='./app.css'>
+	<link rel='stylesheet' href='./build/bundle.css'>
 
 	<link rel="canonical" href="https://svadhis.github.io/realms-helper/" />
   	<link rel="manifest" href="/realms-helper/manifest.webmanifest">
 
 	<script src="./long-press.js"></script>
-	<script defer src='/build/bundle.js'></script>
+	<script defer src='./build/bundle.js'></script>
 
 	<script>
 		if (navigator.serviceWorker) {
 			navigator.serviceWorker.register (
-			'/realms-helper/sw.js',
+			'/realms-helper/public/sw.js',
 			{scope: '/realms-helper/'}
 			)
 		}
   	</script>
-</head>
-
-<body>
 </body>
 </html>
