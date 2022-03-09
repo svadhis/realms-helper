@@ -1,5 +1,5 @@
 
-(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
+(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35730/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
 var app = (function () {
     'use strict';
 
@@ -2444,130 +2444,130 @@ var app = (function () {
     			t44 = text("4 PLAYERS");
     			t45 = space();
     			div43 = element("div");
-    			t46 = text("CHRONO :\r\n\t\t\t");
+    			t46 = text("CHRONO :\n\t\t\t");
     			input = element("input");
     			attr_dev(div0, "id", "count1");
     			attr_dev(div0, "class", "count text-5xl font-black p-3 z-10 flex justify-center items-center");
-    			add_location(div0, file, 148, 3, 2769);
+    			add_location(div0, file, 148, 3, 2621);
     			attr_dev(div1, "class", div1_class_value = "" + ((/*p1health*/ ctx[8] <= 0 ? 'flex' : 'hidden') + " justify-center items-center absolute top-0 bottom-0 left-0 right-0 bg-black bg-opacity-60 text-red-500 text-[220px]"));
-    			add_location(div1, file, 151, 3, 2894);
+    			add_location(div1, file, 151, 3, 2743);
     			attr_dev(div2, "class", "absolute top-0 bottom-1/2 left-0 right-0");
-    			add_location(div2, file, 152, 3, 3071);
+    			add_location(div2, file, 152, 3, 2919);
     			attr_dev(div3, "class", "absolute top-1/2 bottom-0 left-0 right-0");
-    			add_location(div3, file, 153, 3, 3159);
+    			add_location(div3, file, 153, 3, 3006);
 
     			attr_dev(div4, "class", div4_class_value = "" + ((/*activePlayer*/ ctx[0] == 1 || /*activePlayer*/ ctx[0] == 3
     			? 'rotate-180'
     			: '') + " " + (/*players*/ ctx[4] <= 2 ? 'w-full' : 'w-1/2') + " player bg-blue-800 text-white relative flex justify-center items-center"));
 
-    			add_location(div4, file, 147, 2, 2582);
+    			add_location(div4, file, 147, 2, 2435);
     			attr_dev(div5, "id", "count3");
     			attr_dev(div5, "class", "count text-5xl font-black p-3 z-10 flex justify-center items-center");
-    			add_location(div5, file, 156, 3, 3445);
+    			add_location(div5, file, 156, 3, 3289);
     			attr_dev(div6, "class", div6_class_value = "" + ((/*p3health*/ ctx[10] <= 0 ? 'flex' : 'hidden') + " justify-center items-center absolute top-0 bottom-0 left-0 right-0 bg-black bg-opacity-60 text-red-500 text-[220px]"));
-    			add_location(div6, file, 159, 3, 3570);
+    			add_location(div6, file, 159, 3, 3411);
     			attr_dev(div7, "class", "absolute top-0 bottom-1/2 left-0 right-0");
-    			add_location(div7, file, 160, 3, 3747);
+    			add_location(div7, file, 160, 3, 3587);
     			attr_dev(div8, "class", "absolute top-1/2 bottom-0 left-0 right-0");
-    			add_location(div8, file, 161, 3, 3835);
+    			add_location(div8, file, 161, 3, 3674);
 
     			attr_dev(div9, "class", div9_class_value = "" + ((/*activePlayer*/ ctx[0] == 1 || /*activePlayer*/ ctx[0] == 3
     			? 'rotate-180'
     			: '') + " " + (/*players*/ ctx[4] >= 3 ? 'flex' : 'hidden') + " player bg-orange-800 text-white w-1/2 relative justify-center items-center"));
 
-    			add_location(div9, file, 155, 2, 3256);
+    			add_location(div9, file, 155, 2, 3101);
     			attr_dev(div10, "class", "flex-1 flex");
-    			add_location(div10, file, 146, 1, 2553);
+    			add_location(div10, file, 146, 1, 2407);
     			attr_dev(div11, "class", "count text-5xl font-black p-3 my-10 z-10");
-    			add_location(div11, file, 168, 5, 4236);
+    			add_location(div11, file, 168, 5, 4073);
     			attr_dev(div12, "class", "absolute top-0 bottom-1/2 left-0 right-0");
-    			add_location(div12, file, 171, 5, 4326);
+    			add_location(div12, file, 171, 5, 4160);
     			attr_dev(div13, "class", "absolute top-1/2 bottom-0 left-0 right-0");
-    			add_location(div13, file, 172, 5, 4421);
+    			add_location(div13, file, 172, 5, 4254);
     			attr_dev(div14, "class", "counter relative flex justify-center items-center");
-    			add_location(div14, file, 167, 4, 4166);
-    			attr_dev(div15, "class", "dmg-counter flex justify-center items-center w-1/2 p-2");
-    			add_location(div15, file, 166, 3, 4092);
+    			add_location(div14, file, 167, 4, 4004);
+    			attr_dev(div15, "class", "dmg-counter flex justify-center items-center w-1/2 h-56 p-2");
+    			add_location(div15, file, 166, 3, 3926);
     			attr_dev(div16, "class", "count text-5xl font-black p-3 w-full z-10");
-    			add_location(div16, file, 177, 5, 4684);
+    			add_location(div16, file, 177, 5, 4517);
     			attr_dev(div17, "class", "absolute top-0 bottom-1/2 left-0 right-0");
-    			add_location(div17, file, 180, 5, 4774);
+    			add_location(div17, file, 180, 5, 4604);
     			attr_dev(div18, "class", "absolute top-1/2 bottom-0 left-0 right-0");
-    			add_location(div18, file, 181, 5, 4867);
+    			add_location(div18, file, 181, 5, 4696);
     			attr_dev(div19, "class", "counter relative flex justify-center items-center");
-    			add_location(div19, file, 176, 4, 4614);
-    			attr_dev(div20, "class", "money-counter flex justify-center w-1/2 p-2 bg-yellow-300");
-    			add_location(div20, file, 175, 3, 4537);
+    			add_location(div19, file, 176, 4, 4448);
+    			attr_dev(div20, "class", "money-counter flex justify-center w-1/2 p-2 h-56 bg-yellow-300");
+    			add_location(div20, file, 175, 3, 4367);
     			attr_dev(div21, "class", "flex");
-    			add_location(div21, file, 165, 2, 4069);
+    			add_location(div21, file, 165, 2, 3904);
     			attr_dev(div22, "class", "config w-1/5 text-xl p-3");
-    			add_location(div22, file, 186, 3, 5093);
+    			add_location(div22, file, 186, 3, 4917);
     			attr_dev(div23, "class", "end-button flex justify-center items-center py-4");
-    			add_location(div23, file, 187, 3, 5173);
+    			add_location(div23, file, 187, 3, 4996);
     			attr_dev(div24, "class", div24_class_value = "timer w-1/5 text-xl text-right p-3 " + (/*time*/ ctx[7] < 0 && 'text-red-300'));
-    			add_location(div24, file, 190, 3, 5284);
+    			add_location(div24, file, 190, 3, 5104);
     			attr_dev(div25, "class", div25_class_value = "flex justify-between items-center bg-" + /*color*/ ctx[6] + "-800 text-3xl font-black px-4 text-white");
-    			add_location(div25, file, 185, 2, 4990);
+    			add_location(div25, file, 185, 2, 4815);
 
     			attr_dev(div26, "class", div26_class_value = "bg-red-500 border-b border-t border-black flex-col " + (/*activePlayer*/ ctx[0] == 1 || /*activePlayer*/ ctx[0] == 3
     			? 'rotate-180'
     			: ''));
 
-    			add_location(div26, file, 164, 1, 3940);
+    			add_location(div26, file, 164, 1, 3776);
     			attr_dev(div27, "id", "count2");
     			attr_dev(div27, "class", "count text-5xl font-black p-3 z-10 flex justify-center items-center");
-    			add_location(div27, file, 195, 3, 5665);
+    			add_location(div27, file, 195, 3, 5480);
     			attr_dev(div28, "class", div28_class_value = "" + ((/*p2health*/ ctx[9] <= 0 ? 'flex' : 'hidden') + " justify-center items-center absolute top-0 bottom-0 left-0 right-0 bg-black bg-opacity-60 text-red-500 text-[220px]"));
-    			add_location(div28, file, 198, 3, 5791);
+    			add_location(div28, file, 198, 3, 5603);
     			attr_dev(div29, "class", "absolute top-0 bottom-1/2 left-0 right-0");
-    			add_location(div29, file, 199, 3, 5968);
+    			add_location(div29, file, 199, 3, 5779);
     			attr_dev(div30, "class", "absolute top-1/2 bottom-0 left-0 right-0");
-    			add_location(div30, file, 200, 3, 6056);
+    			add_location(div30, file, 200, 3, 5866);
 
     			attr_dev(div31, "class", div31_class_value = "" + ((/*activePlayer*/ ctx[0] == 1 || /*activePlayer*/ ctx[0] == 3
     			? 'rotate-180'
     			: '') + " " + (/*players*/ ctx[4] >= 2 ? 'flex' : 'hidden') + " " + (/*players*/ ctx[4] <= 3 ? 'w-full' : 'w-1/2') + " player bg-pink-800 text-white relative flex justify-center items-center"));
 
-    			add_location(div31, file, 194, 2, 5443);
+    			add_location(div31, file, 194, 2, 5259);
     			attr_dev(div32, "id", "count4");
     			attr_dev(div32, "class", "count text-5xl font-black p-3 z-10 flex justify-center items-center");
-    			add_location(div32, file, 203, 3, 6341);
+    			add_location(div32, file, 203, 3, 6148);
     			attr_dev(div33, "class", div33_class_value = "" + ((/*p4health*/ ctx[11] <= 0 ? 'flex' : 'hidden') + " justify-center items-center absolute top-0 bottom-0 left-0 right-0 bg-black bg-opacity-60 text-red-500 text-[220px]"));
-    			add_location(div33, file, 206, 3, 6466);
+    			add_location(div33, file, 206, 3, 6270);
     			attr_dev(div34, "class", "absolute top-0 bottom-1/2 left-0 right-0");
-    			add_location(div34, file, 207, 3, 6643);
+    			add_location(div34, file, 207, 3, 6446);
     			attr_dev(div35, "class", "absolute top-1/2 bottom-0 left-0 right-0");
-    			add_location(div35, file, 208, 3, 6731);
+    			add_location(div35, file, 208, 3, 6533);
 
     			attr_dev(div36, "class", div36_class_value = "" + ((/*activePlayer*/ ctx[0] == 1 || /*activePlayer*/ ctx[0] == 3
     			? 'rotate-180'
     			: '') + " " + (/*players*/ ctx[4] >= 4 ? 'flex' : 'hidden') + " player bg-green-800 text-white w-1/2 relative justify-center items-center"));
 
-    			add_location(div36, file, 202, 2, 6153);
+    			add_location(div36, file, 202, 2, 5961);
     			attr_dev(div37, "class", "flex-1 flex");
-    			add_location(div37, file, 193, 1, 5414);
+    			add_location(div37, file, 193, 1, 5231);
     			attr_dev(div38, "class", "absolute top-3 right-3 p-4 text-3xl");
-    			add_location(div38, file, 213, 2, 7061);
+    			add_location(div38, file, 213, 2, 6858);
     			attr_dev(div39, "class", div39_class_value = "players-2 " + (/*players*/ ctx[4] == 2 ? 'bg-gray-800' : 'bg-black') + " p-3 border rounded text-center");
-    			add_location(div39, file, 215, 3, 7206);
+    			add_location(div39, file, 215, 3, 7001);
     			attr_dev(div40, "class", div40_class_value = "players-3 " + (/*players*/ ctx[4] == 3 ? 'bg-gray-800' : 'bg-black') + " p-3 border rounded text-center");
-    			add_location(div40, file, 216, 3, 7360);
+    			add_location(div40, file, 216, 3, 7154);
     			attr_dev(div41, "class", div41_class_value = "players-4 " + (/*players*/ ctx[4] == 4 ? 'bg-gray-800' : 'bg-black') + " p-3 border rounded text-center");
-    			add_location(div41, file, 217, 3, 7514);
+    			add_location(div41, file, 217, 3, 7307);
     			attr_dev(div42, "class", "player-number flex flex-col space-y-2");
-    			add_location(div42, file, 214, 2, 7150);
+    			add_location(div42, file, 214, 2, 6946);
     			attr_dev(input, "class", "bg-black w-32");
-    			add_location(input, file, 221, 3, 7726);
+    			add_location(input, file, 221, 3, 7515);
     			attr_dev(div43, "class", "timer-option my-6");
-    			add_location(div43, file, 219, 2, 7677);
+    			add_location(div43, file, 219, 2, 7468);
 
     			attr_dev(div44, "class", div44_class_value = "option-board " + (/*activePlayer*/ ctx[0] == 1 || /*activePlayer*/ ctx[0] == 3
     			? 'rotate-180'
     			: '') + " " + (/*optionBoard*/ ctx[5] ? 'block' : 'hidden') + " z-50 text-white absolute top-0 bottom-0 left-0 right-0 bg-black p-5 flex flex-col justify-center");
 
-    			add_location(div44, file, 212, 1, 6838);
+    			add_location(div44, file, 212, 1, 6636);
     			attr_dev(main, "class", "h-screen flex flex-col border-blue-800 border-pink-800 border-orange-800 border-green-800");
-    			add_location(main, file, 145, 0, 2446);
+    			add_location(main, file, 145, 0, 2301);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3195,6 +3195,8 @@ var app = (function () {
     		optionBoard: false
     	}
     });
+
+    navigator.wakeLock.request('screen');
 
     return app;
 

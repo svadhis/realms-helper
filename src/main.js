@@ -14,4 +14,6 @@ const app = new App({
 	}
 });
 
+navigator.wakeLock.request('screen');
+
 export default app;

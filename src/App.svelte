@@ -164,7 +164,7 @@
 	</div>
 	<div class="bg-red-500 border-b border-t border-black flex-col {activePlayer == 1 || activePlayer == 3 ? 'rotate-180' : ''}">
 		<div class="flex">
-			<div class="dmg-counter flex justify-center items-center w-1/2 p-2">
+			<div class="dmg-counter flex justify-center items-center w-1/2 h-56 p-2">
 				<div class="counter relative flex justify-center items-center">
 					<div class="count text-5xl font-black p-3 my-10 z-10">
 						{damage}
@@ -173,7 +173,7 @@
 					<div on:click={decrementDamage} class=" absolute top-1/2 bottom-0 left-0 right-0"></div>
 				</div>
 			</div>
-			<div class="money-counter flex justify-center w-1/2 p-2 bg-yellow-300">
+			<div class="money-counter flex justify-center w-1/2 p-2 h-56 bg-yellow-300">
 				<div class="counter relative flex justify-center items-center">
 					<div class="count text-5xl font-black p-3 w-full z-10">
 						{money}
