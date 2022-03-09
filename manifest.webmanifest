@@ -6,5 +6,12 @@
     "start_url": "/realms-helper/",
     "background_color": "#ffffff",
     "theme_color": "#ffffff",
-    "display": "fullscreen"
+    "display": "fullscreen",
+    "icons": [
+        {
+          "src": "/realms-helper/favicon.png",
+          "type": "image/png",
+          "sizes": "128x128"
+        }
+    ]
   }
