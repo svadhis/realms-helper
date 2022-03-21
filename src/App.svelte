@@ -420,7 +420,7 @@
 			<div on:click={() => setHistory(false)} class="{!historyOption ? 'bg-gray-700' : 'bg-black'} p-3 border rounded text-center">DISABLE HISTORY</div>
 		</div>
 		<div class="timer-option my-10">
-			CHRONO :
+			TIMER :
 			<input bind:value={maxTime} class="bg-black w-32">
 		</div>
 		<div on:click={resetGame} class="reset-game p-3 border rounded text-center">RESET GAME</div>
