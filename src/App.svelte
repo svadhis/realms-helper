@@ -1,9 +1,9 @@
 <script>
 	import {dndzone} from "svelte-dnd-action";
 
-	export let activePlayer, initialHealth, damage, money, maxTime, players, optionBoard;
+	export let activePlayer, initialHealth, attack, money, maxTime, players, optionBoard;
 
-	let color = getColor();
+	let color = getColor(activePlayer);
 
 	let time = maxTime;
 
@@ -18,6 +18,21 @@
 	let highlightedAttackScale = 0;
 	let highlightedMoneyScale = 0;
 
+	let historyOption = false;
+
+	let history = [];
+
+	let playCache = {
+		p1: 0,
+		p2: 0,
+		p3: 0,
+		p4: 0,
+		attack: 0,
+		money: 0
+	};
+
+	let cacheTimer;
+
 	timer();
 
 	let counts = document.querySelectorAll('.count');
@@ -25,23 +40,23 @@
 	document.addEventListener('long-press', function(e) {
 		switch (e.target.dataset.player) {
 			case '1':
-				p1health -= damage;
-				damage = 0;
+				p1health -= attack;
+				attack = 0;
 				break;
 
 			case '2':
-				p2health -= damage;
-				damage = 0;
+				p2health -= attack;
+				attack = 0;
 				break;
 
 			case '3':
-				p3health -= damage;
-				damage = 0;
+				p3health -= attack;
+				attack = 0;
 				break;
 
 			case '4':
-				p4health -= damage;
-				damage = 0;
+				p4health -= attack;
+				attack = 0;
 				break;
 
 			default:
@@ -55,10 +70,14 @@
 		p3health = initialHealth;
 		p4health = initialHealth;
 
-		damage = 0;
+		attack = 0;
 		money = 0;
 
 		toggleOptionBoard();
+	}
+
+	function setHistory(value) {
+		historyOption = value;
 	}
 
 	function setPlayerNumber(number) {
@@ -69,60 +88,171 @@
 		optionBoard = !optionBoard;
 	}
 
+	function delayCacheClear() {
+		clearTimeout(cacheTimer);
+
+		cacheTimer = setTimeout(() => {
+			let newHistory = [...history];
+
+			playCache.p1 != 0 && newHistory.push({
+				type: 'p1',
+				value: (playCache.p1 >= 0 ? '+' : '') + playCache.p1
+			})
+
+			playCache.p2 != 0 && newHistory.push({
+				type: 'p2',
+				value: (playCache.p2 >= 0 ? '+' : '') + playCache.p2
+			})
+
+			playCache.p3 != 0 && newHistory.push({
+				type: 'p3',
+				value: (playCache.p3 >= 0 ? '+' : '') + playCache.p3
+			})
+
+			playCache.p4 != 0 && newHistory.push({
+				type: 'p4',
+				value: (playCache.p4 >= 0 ? '+' : '') + playCache.p4
+			})
+
+			playCache.attack != 0 && newHistory.push({
+				type: 'attack',
+				value: (playCache.attack >= 0 ? '+' : '') + playCache.attack
+			})
+
+			playCache.money != 0 && newHistory.push({
+				type: 'money',
+				value: (playCache.money >= 0 ? '+' : '') + playCache.money
+			})
+
+			history = newHistory;
+
+			playCache = {
+				p1: 0,
+				p2: 0,
+				p3: 0,
+				p4: 0,
+				attack: 0,
+				money: 0
+			};
+		}, 2000);
+	}
+
 	function incrementP1() {
 		p1health += 1;
+		playCache = {
+			...playCache,
+			p1: playCache.p1 += 1
+		}
+		delayCacheClear();
 	}
 
 	function decrementP1() {
 		p1health -= 1;
+		playCache = {
+			...playCache,
+			p1: playCache.p1 -= 1
+		}
+		delayCacheClear();
 	}
 
 	function incrementP2() {
 		p2health += 1;
+		playCache = {
+			...playCache,
+			p2: playCache.p2 += 1
+		}
+		delayCacheClear();
 	}
 
 	function decrementP2() {
 		p2health -= 1;
+		playCache = {
+			...playCache,
+			p2: playCache.p2 -= 1
+		}
+		delayCacheClear();
 	}
 
 	function incrementP3() {
 		p3health += 1;
+		playCache = {
+			...playCache,
+			p3: playCache.p3 += 1
+		}
+		delayCacheClear();
 	}
 
 	function decrementP3() {
 		p3health -= 1;
+		playCache = {
+			...playCache,
+			p3: playCache.p3 -= 1
+		}
+		delayCacheClear();
 	}
 
 	function incrementP4() {
 		p4health += 1;
+		playCache = {
+			...playCache,
+			p4: playCache.p4 += 1
+		}
+		delayCacheClear();
 	}
 
 	function decrementP4() {
 		p4health -= 1;
+		playCache = {
+			...playCache,
+			p4: playCache.p4 -= 1
+		}
+		delayCacheClear();
 	}
 
-	function incrementDamage() {
-		damage += 1;
+	function incrementAttack() {
+		attack += 1;
+		playCache = {
+			...playCache,
+			attack: playCache.attack += 1
+		}
+		delayCacheClear();
 	}
 
-	function decrementDamage() {
-		damage -= 1;
+	function decrementAttack() {
+		attack -= 1;
+		playCache = {
+			...playCache,
+			attack: playCache.attack -= 1
+		}
+		delayCacheClear();
 	}
 
 	function incrementMoney() {
 		money += 1;
+		playCache = {
+			...playCache,
+			money: playCache.money += 1
+		}
+		delayCacheClear();
 	}
 
 	function decrementMoney() {
 		money -= 1;
+		playCache = {
+			...playCache,
+			money: playCache.money -= 1
+		}
+		delayCacheClear();
 	}
 
 	function endTurn() {
 		money = 0;
-		damage = 0;
+		attack = 0;
+
+		history = [];
 
 		activePlayer = getActivePlayer(activePlayer);
-		color = getColor();
+		color = getColor(activePlayer);
 		time = maxTime;
 	}
 
@@ -149,8 +279,8 @@
 		return aP;
 	}
 
-	function getColor() {
-		return activePlayer == 1 ? 'blue' : activePlayer == 2 ? 'pink' : activePlayer == 3 ? 'orange' : 'green';
+	function getColor(player) {
+		return player == 1 ? 'blue' : player == 2 ? 'pink' : player == 3 ? 'orange' : 'green';
 	}
 
 	function timer() {
@@ -187,19 +317,27 @@
 	}
 
 	function saveAttack(value) {
-		damage += +value;
+		attack += +value;
 		highlightedAttackScale = 0;
+		history = [...history, {
+			type: 'attack',
+			value: (value >= 0 ? '+' : '') + value
+		}]
 	}
 
 	function saveMoney(value) {
 		money += +value;
 		highlightedMoneyScale = 0;
+		history = [...history, {
+			type: 'money',
+			value: (value >= 0 ? '+' : '') + value
+		}]
 	}
 </script>
 
-<main class="h-screen overflow-hidden flex flex-col border-blue-800 border-pink-800 border-orange-800 border-green-800">
+<main class="h-screen overflow-hidden flex flex-col border-blue-700 border-pink-700 border-orange-700 border-green-700">
 	<div class="flex-1 flex">
-		<div class="{activePlayer == 2 || activePlayer == 4 ? 'rotate-180' : ''} {players >= 2 ? 'flex' : 'hidden'} {players <= 3 ? 'w-full' : 'w-1/2'} player bg-pink-800 text-white relative flex justify-center items-center">
+		<div class="{activePlayer == 2 || activePlayer == 4 ? 'rotate-180' : ''} {players >= 2 ? 'flex' : 'hidden'} {players <= 3 ? 'w-full' : 'w-1/2'} player bg-pink-700 text-white relative flex justify-center items-center">
 			<div class="pointer-events-none count text-5xl font-black  p-3 z-10 flex justify-center items-center">
 				{p2health}
 			</div>
@@ -207,7 +345,7 @@
 			<div data-player="2" on:click={incrementP2} class="absolute top-0 bottom-1/2 left-0 right-0"></div>
 			<div data-player="2" on:click={decrementP2} class="absolute top-1/2 bottom-0 left-0 right-0"></div>
 		</div>
-		<div class="{activePlayer == 2 || activePlayer == 4 ? 'rotate-180' : ''} {players >= 4 ? 'flex' : 'hidden'} player bg-green-800 text-white w-1/2 relative justify-center items-center">
+		<div class="{activePlayer == 2 || activePlayer == 4 ? 'rotate-180' : ''} {players >= 4 ? 'flex' : 'hidden'} player bg-green-700 text-white w-1/2 relative justify-center items-center">
 			<div class="pointer-events-none count text-5xl font-black p-3 z-10 flex justify-center items-center">
 				{p4health}
 			</div>
@@ -219,16 +357,16 @@
 
 	<div class="bg-red-500 border-b border-t border-black flex-col {activePlayer == 2 || activePlayer == 4 ? 'rotate-180' : ''}">
 		<div class="flex">
-			<div class="dmg-counter flex justify-center w-1/2 h-56 p-2">
+			<div class="dmg-counter flex justify-center w-1/2 h-52 p-2">
 				<div class="counter relative flex flex-1 justify-center items-center">
 					<div class="pointer-events-none count text-5xl font-black p-3 my-10 z-10">
-						{damage}
+						{attack}
 					</div>
-					<div on:click={incrementDamage} class=" absolute top-0 bottom-1/2 left-0 right-0"></div>
-					<div on:click={decrementDamage} class=" absolute top-1/2 bottom-0 left-0 right-0"></div>
+					<div on:click={incrementAttack} class=" absolute top-0 bottom-1/2 left-0 right-0"></div>
+					<div on:click={decrementAttack} class=" absolute top-1/2 bottom-0 left-0 right-0"></div>
 				</div>
 			</div>
-			<div class="money-counter flex justify-center w-1/2 p-2 h-56 bg-yellow-300">
+			<div class="money-counter flex justify-center w-1/2 p-2 h-52 bg-yellow-300">
 				<div class="counter relative flex flex-1 justify-center items-center">
 					<div class="pointer-events-none count text-5xl font-black p-3 z-10">
 						{money}
@@ -238,16 +376,21 @@
 				</div>
 			</div>
 		</div>
-		<div class="flex justify-between items-center bg-{color}-800 text-3xl font-black px-4 text-white">
+		<div class="relative flex justify-between items-center {historyOption ? 'pb-8' : ''} bg-{color}-700 text-3xl font-black px-4 text-white">
 			<div on:click={toggleOptionBoard} class="config w-1/5 text-xl p-3">⚙️</div>
-			<div on:click={endTurn} class="end-button flex justify-center items-center py-4">
+			<div on:click={endTurn} class="end-button flex justify-center items-center py-5">
 				END TURN
 			</div>
 			<div class="timer w-1/5 text-xl text-right p-3 {time < 0 && 'text-red-300'}">{maxTime > 0 ? time : ''}</div>
+			<div class="{historyOption ? 'flex' : 'hidden'} absolute bottom-0 left-0 right-0 h-12 p-2 space-x-1">
+				{#each history as play}
+				<div class="pointer-events-none rounded-full w-8 h-8 flex justify-center items-center opacity-60 {play.type == 'attack' ? 'bg-red-400' : play.type == 'money' ? 'bg-yellow-300' : play.type == 'p1' ? 'bg-blue-900' : play.type == 'p2' ? 'bg-pink-900' : play.type == 'p3' ? 'bg-green-900' : 'bg-orange-900'} {['attack', 'money'].includes(play.type) ? 'text-black' : 'text-white'} font-bold text-xs">{play.value}</div>
+				{/each}
+			</div>
 		</div>
 	</div>
 	<div class="flex-1 flex">
-		<div class="{activePlayer == 2 || activePlayer == 4 ? 'rotate-180' : ''} {players <= 2 ? 'w-full' : 'w-1/2'} player bg-blue-800 text-white relative flex justify-center items-center">
+		<div class="{activePlayer == 2 || activePlayer == 4 ? 'rotate-180' : ''} {players <= 2 ? 'w-full' : 'w-1/2'} player bg-blue-700 text-white relative flex justify-center items-center">
 			<div class="pointer-events-none count text-5xl font-black p-3 z-10 flex justify-center items-center">
 				{p1health}
 			</div>
@@ -255,7 +398,7 @@
 			<div data-player="1" on:click={incrementP1} class="absolute top-0 bottom-1/2 left-0 right-0"></div>
 			<div data-player="1" on:click={decrementP1} class="absolute top-1/2 bottom-0 left-0 right-0"></div>
 		</div>
-		<div class="{activePlayer == 2 || activePlayer == 4 ? 'rotate-180' : ''} {players >= 3 ? 'flex' : 'hidden'} player bg-orange-800 text-white w-1/2 relative justify-center items-center">
+		<div class="{activePlayer == 2 || activePlayer == 4 ? 'rotate-180' : ''} {players >= 3 ? 'flex' : 'hidden'} player bg-orange-700 text-white w-1/2 relative justify-center items-center">
 			<div class="pointer-events-none count text-5xl font-black p-3 z-10 flex justify-center items-center">
 				{p3health}
 			</div>
@@ -268,9 +411,13 @@
 	<div class="option-board {activePlayer == 2 || activePlayer == 4 ? 'rotate-180' : ''} {optionBoard ? 'block' : 'hidden'} z-50 text-white absolute top-0 bottom-0 left-0 right-0 bg-black p-5 flex flex-col justify-center">
 		<div on:click={toggleOptionBoard} class="absolute top-3 right-3 p-4 text-3xl">X</div>
 		<div class="player-number flex flex-col space-y-2">
-			<div on:click={() => setPlayerNumber(2)} class="players-2 {players == 2 ? 'bg-gray-800' : 'bg-black'} p-3 border rounded text-center">2 PLAYERS</div>
-			<div on:click={() => setPlayerNumber(3)} class="players-3 {players == 3 ? 'bg-gray-800' : 'bg-black'} p-3 border rounded text-center">3 PLAYERS</div>
-			<div on:click={() => setPlayerNumber(4)} class="players-4 {players == 4 ? 'bg-gray-800' : 'bg-black'} p-3 border rounded text-center">4 PLAYERS</div>
+			<div on:click={() => setPlayerNumber(2)} class="players-2 {players == 2 ? 'bg-gray-700' : 'bg-black'} p-3 border rounded text-center">2 PLAYERS</div>
+			<div on:click={() => setPlayerNumber(3)} class="players-3 {players == 3 ? 'bg-gray-700' : 'bg-black'} p-3 border rounded text-center">3 PLAYERS</div>
+			<div on:click={() => setPlayerNumber(4)} class="players-4 {players == 4 ? 'bg-gray-700' : 'bg-black'} p-3 border rounded text-center">4 PLAYERS</div>
+		</div>
+		<div class="history-option flex flex-col space-y-2 mt-10">
+			<div on:click={() => setHistory(true)} class="{historyOption ? 'bg-gray-700' : 'bg-black'} p-3 border rounded text-center">ENABLE HISTORY</div>
+			<div on:click={() => setHistory(false)} class="{!historyOption ? 'bg-gray-700' : 'bg-black'} p-3 border rounded text-center">DISABLE HISTORY</div>
 		</div>
 		<div class="timer-option my-10">
 			CHRONO :
@@ -282,7 +429,7 @@
 	<div class="absolute top-1/2 left-0 right-0 h-1 {activePlayer == 2 || activePlayer == 4 ? 'rotate-180' : ''}">
 		<input
 			type="range"
-			class="form-range {showAttackScale ? 'touching' : ''} absolute left-1/2 attack -rotate-90 translate-y-[-13px] translate-x-[-330px] appearance-none w-[600px] h-6 p-0 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none"
+			class="form-range {showMoneyScale || showAttackScale ? 'touching' : ''} absolute left-1/2 attack -rotate-90 translate-y-[-13px] translate-x-[-330px] appearance-none w-[600px] h-6 p-0 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none"
 			min="-10"
 			max="10"
 			value="{highlightedAttackScale}"
@@ -343,7 +490,7 @@
 
 		<input
 			type="range"
-			class="form-range {showAttackScale ? 'touching' : ''} absolute right-1/2 attack -rotate-90 translate-y-[-13px] translate-x-[330px] appearance-none w-[600px] h-6 p-0 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none"
+			class="form-range {showMoneyScale || showAttackScale ? 'touching' : ''} absolute right-1/2 attack -rotate-90 translate-y-[-13px] translate-x-[330px] appearance-none w-[600px] h-6 p-0 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none"
 			min="-10"
 			max="10"
 			value="{highlightedMoneyScale}"

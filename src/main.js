@@ -4,7 +4,7 @@ const app = new App({
 	target: document.body,
 	props: {
 		activePlayer: 1,
-		damage: 0,
+		attack: 0,
 		money: 0,
 		players: 2,
 		initialHealth: 50,
