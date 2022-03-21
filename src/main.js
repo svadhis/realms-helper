@@ -1,5 +1,4 @@
 import App from './App.svelte';
-import interact from 'interactjs';
 
 const app = new App({
 	target: document.body,
@@ -15,5 +14,9 @@ const app = new App({
 });
 
 navigator.wakeLock.request('screen');
+
+window.addEventListener('contextmenu', function (e) {
+	e.preventDefault();
+}, false);
 
 export default app;

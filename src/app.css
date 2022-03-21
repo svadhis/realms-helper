@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input[type="range"] {
+    pointer-events: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    pointer-events: all;
+    width: 36px;
+    -webkit-appearance: none;
+      appearance: none;
+    height: 36px;
+    background: #0002;
+    border-radius: 50%;
+}
+
+input[type="range"].touching::-webkit-slider-thumb {
+    background: transparent;
+}
