@@ -528,6 +528,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   right: 1rem;
 }
 
+.left-2 {
+  left: 0.5rem;
+}
+
+.right-2 {
+  right: 0.5rem;
+}
+
+.left-1 {
+  left: 0.25rem;
+}
+
 .z-10 {
   z-index: 10;
 }
