@@ -199,24 +199,25 @@
 
 <main class="h-screen overflow-hidden flex flex-col border-blue-800 border-pink-800 border-orange-800 border-green-800">
 	<div class="flex-1 flex">
-		<div class="{activePlayer == 1 || activePlayer == 3 ? 'rotate-180' : ''} {players <= 2 ? 'w-full' : 'w-1/2'} player bg-blue-800 text-white relative flex justify-center items-center">
-			<div class="pointer-events-none count text-5xl font-black p-3 z-10 flex justify-center items-center">
-				{p1health}
+		<div class="{activePlayer == 2 || activePlayer == 4 ? 'rotate-180' : ''} {players >= 2 ? 'flex' : 'hidden'} {players <= 3 ? 'w-full' : 'w-1/2'} player bg-pink-800 text-white relative flex justify-center items-center">
+			<div class="pointer-events-none count text-5xl font-black  p-3 z-10 flex justify-center items-center">
+				{p2health}
 			</div>
-			<div class="{p1health <= 0 ? 'flex' : 'hidden'} justify-center items-center absolute top-0 bottom-0 left-0 right-0 bg-black bg-opacity-60 text-red-500 text-[220px]">X</div>
-			<div data-player="1" on:click={incrementP1} class="absolute top-0 bottom-1/2 left-0 right-0"></div>
-			<div data-player="1" on:click={decrementP1} class="absolute top-1/2 bottom-0 left-0 right-0"></div>
+			<div class="{p2health <= 0 ? 'flex' : 'hidden'} justify-center items-center absolute top-0 bottom-0 left-0 right-0 bg-black bg-opacity-60 text-red-500 text-[220px]">X</div>
+			<div data-player="2" on:click={incrementP2} class="absolute top-0 bottom-1/2 left-0 right-0"></div>
+			<div data-player="2" on:click={decrementP2} class="absolute top-1/2 bottom-0 left-0 right-0"></div>
 		</div>
-		<div class="{activePlayer == 1 || activePlayer == 3 ? 'rotate-180' : ''} {players >= 3 ? 'flex' : 'hidden'} player bg-orange-800 text-white w-1/2 relative justify-center items-center">
+		<div class="{activePlayer == 2 || activePlayer == 4 ? 'rotate-180' : ''} {players >= 4 ? 'flex' : 'hidden'} player bg-green-800 text-white w-1/2 relative justify-center items-center">
 			<div class="pointer-events-none count text-5xl font-black p-3 z-10 flex justify-center items-center">
-				{p3health}
+				{p4health}
 			</div>
-			<div class="{p3health <= 0 ? 'flex' : 'hidden'} justify-center items-center absolute top-0 bottom-0 left-0 right-0 bg-black bg-opacity-60 text-red-500 text-[220px]">X</div>
-			<div data-player="3" on:click={incrementP3} class="absolute top-0 bottom-1/2 left-0 right-0"></div>
-			<div data-player="3" on:click={decrementP3} class="absolute top-1/2 bottom-0 left-0 right-0"></div>
+			<div class="{p4health <= 0 ? 'flex' : 'hidden'} justify-center items-center absolute top-0 bottom-0 left-0 right-0 bg-black bg-opacity-60 text-red-500 text-[220px]">X</div>
+			<div data-player="4" on:click={incrementP4} class="absolute top-0 bottom-1/2 left-0 right-0"></div>
+			<div data-player="4" on:click={decrementP4} class="absolute top-1/2 bottom-0 left-0 right-0"></div>
 		</div>
 	</div>
-	<div class="bg-red-500 border-b border-t border-black flex-col {activePlayer == 1 || activePlayer == 3 ? 'rotate-180' : ''}">
+
+	<div class="bg-red-500 border-b border-t border-black flex-col {activePlayer == 2 || activePlayer == 4 ? 'rotate-180' : ''}">
 		<div class="flex">
 			<div class="dmg-counter flex justify-center w-1/2 h-56 p-2">
 				<div class="counter relative flex flex-1 justify-center items-center">
@@ -246,25 +247,25 @@
 		</div>
 	</div>
 	<div class="flex-1 flex">
-		<div class="{activePlayer == 1 || activePlayer == 3 ? 'rotate-180' : ''} {players >= 2 ? 'flex' : 'hidden'} {players <= 3 ? 'w-full' : 'w-1/2'} player bg-pink-800 text-white relative flex justify-center items-center">
-			<div class="pointer-events-none count text-5xl font-black  p-3 z-10 flex justify-center items-center">
-				{p2health}
-			</div>
-			<div class="{p2health <= 0 ? 'flex' : 'hidden'} justify-center items-center absolute top-0 bottom-0 left-0 right-0 bg-black bg-opacity-60 text-red-500 text-[220px]">X</div>
-			<div data-player="2" on:click={incrementP2} class="absolute top-0 bottom-1/2 left-0 right-0"></div>
-			<div data-player="2" on:click={decrementP2} class="absolute top-1/2 bottom-0 left-0 right-0"></div>
-		</div>
-		<div class="{activePlayer == 1 || activePlayer == 3 ? 'rotate-180' : ''} {players >= 4 ? 'flex' : 'hidden'} player bg-green-800 text-white w-1/2 relative justify-center items-center">
+		<div class="{activePlayer == 2 || activePlayer == 4 ? 'rotate-180' : ''} {players <= 2 ? 'w-full' : 'w-1/2'} player bg-blue-800 text-white relative flex justify-center items-center">
 			<div class="pointer-events-none count text-5xl font-black p-3 z-10 flex justify-center items-center">
-				{p4health}
+				{p1health}
 			</div>
-			<div class="{p4health <= 0 ? 'flex' : 'hidden'} justify-center items-center absolute top-0 bottom-0 left-0 right-0 bg-black bg-opacity-60 text-red-500 text-[220px]">X</div>
-			<div data-player="4" on:click={incrementP4} class="absolute top-0 bottom-1/2 left-0 right-0"></div>
-			<div data-player="4" on:click={decrementP4} class="absolute top-1/2 bottom-0 left-0 right-0"></div>
+			<div class="{p1health <= 0 ? 'flex' : 'hidden'} justify-center items-center absolute top-0 bottom-0 left-0 right-0 bg-black bg-opacity-60 text-red-500 text-[220px]">X</div>
+			<div data-player="1" on:click={incrementP1} class="absolute top-0 bottom-1/2 left-0 right-0"></div>
+			<div data-player="1" on:click={decrementP1} class="absolute top-1/2 bottom-0 left-0 right-0"></div>
+		</div>
+		<div class="{activePlayer == 2 || activePlayer == 4 ? 'rotate-180' : ''} {players >= 3 ? 'flex' : 'hidden'} player bg-orange-800 text-white w-1/2 relative justify-center items-center">
+			<div class="pointer-events-none count text-5xl font-black p-3 z-10 flex justify-center items-center">
+				{p3health}
+			</div>
+			<div class="{p3health <= 0 ? 'flex' : 'hidden'} justify-center items-center absolute top-0 bottom-0 left-0 right-0 bg-black bg-opacity-60 text-red-500 text-[220px]">X</div>
+			<div data-player="3" on:click={incrementP3} class="absolute top-0 bottom-1/2 left-0 right-0"></div>
+			<div data-player="3" on:click={decrementP3} class="absolute top-1/2 bottom-0 left-0 right-0"></div>
 		</div>
 	</div>
 
-	<div class="option-board {activePlayer == 1 || activePlayer == 3 ? 'rotate-180' : ''} {optionBoard ? 'block' : 'hidden'} z-50 text-white absolute top-0 bottom-0 left-0 right-0 bg-black p-5 flex flex-col justify-center">
+	<div class="option-board {activePlayer == 2 || activePlayer == 4 ? 'rotate-180' : ''} {optionBoard ? 'block' : 'hidden'} z-50 text-white absolute top-0 bottom-0 left-0 right-0 bg-black p-5 flex flex-col justify-center">
 		<div on:click={toggleOptionBoard} class="absolute top-3 right-3 p-4 text-3xl">X</div>
 		<div class="player-number flex flex-col space-y-2">
 			<div on:click={() => setPlayerNumber(2)} class="players-2 {players == 2 ? 'bg-gray-800' : 'bg-black'} p-3 border rounded text-center">2 PLAYERS</div>
@@ -278,7 +279,7 @@
 		<div on:click={resetGame} class="reset-game p-3 border rounded text-center">RESET GAME</div>
 	</div>
 
-	<div class="absolute top-1/2 left-0 right-0 h-1 {activePlayer == 1 || activePlayer == 3 ? 'rotate-180' : ''}">
+	<div class="absolute top-1/2 left-0 right-0 h-1 {activePlayer == 2 || activePlayer == 4 ? 'rotate-180' : ''}">
 		<input
 			type="range"
 			class="form-range {showAttackScale ? 'touching' : ''} absolute left-1/2 attack -rotate-90 translate-y-[-13px] translate-x-[-330px] appearance-none w-[600px] h-6 p-0 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none"
@@ -292,7 +293,31 @@
 			on:input={e => highlightScale('attack', e.target.value)}
 			on:change={e => saveAttack(e.target.value)}
 		/>
-		<div class="attack-scale scale absolute left-4 flex-col w-10 h-[600px] translate-y-[-300px] justify-between items-end {showAttackScale ? 'flex' : 'hidden'}">
+		<div class="attack-scale scale absolute left-0 flex-col w-10 h-[600px] translate-y-[-300px] justify-between items-end {showAttackScale ? 'flex' : 'hidden'}">
+			<div data-scale="10" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedAttackScale == 10 ? 'bg-white' : 'bg-red-300'} font-bold">10</div>
+			<div data-scale="9" class="rounded-full w-2 h-2 mr-3 {highlightedAttackScale == 9 ? 'bg-white' : 'bg-red-300'} "></div>
+			<div data-scale="8" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedAttackScale == 8 ? 'bg-white' : 'bg-red-300'}  font-bold">8</div>
+			<div data-scale="7" class="rounded-full w-2 h-2 mr-3 {highlightedAttackScale == 7 ? 'bg-white' : 'bg-red-300'} "></div>
+			<div data-scale="6" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedAttackScale == 6 ? 'bg-white' : 'bg-red-300'}  font-bold">6</div>
+			<div data-scale="5" class="rounded-full w-2 h-2 mr-3 {highlightedAttackScale == 5 ? 'bg-white' : 'bg-red-300'} "></div>
+			<div data-scale="4" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedAttackScale == 4 ? 'bg-white' : 'bg-red-300'}  font-bold">4</div>
+			<div data-scale="3" class="rounded-full w-2 h-2 mr-3 {highlightedAttackScale == 3 ? 'bg-white' : 'bg-red-300'} "></div>
+			<div data-scale="2" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedAttackScale == 2 ? 'bg-white' : 'bg-red-300'}  font-bold">2</div>
+			<div data-scale="1" class="rounded-full w-2 h-2 mr-3 {highlightedAttackScale == 1 ? 'bg-white' : 'bg-red-300'} "></div>
+			<div data-scale="0" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedAttackScale == 0 ? 'bg-white' : 'bg-red-300'}  font-bold">0</div>
+			<div data-scale="-1" class="rounded-full w-2 h-2 mr-3 {highlightedAttackScale == -1 ? 'bg-white' : 'bg-red-300'} "></div>
+			<div data-scale="-2" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedAttackScale == -2 ? 'bg-white' : 'bg-red-300'}  font-bold">-2</div>
+			<div data-scale="-3" class="rounded-full w-2 h-2 mr-3 {highlightedAttackScale == -3 ? 'bg-white' : 'bg-red-300'} "></div>
+			<div data-scale="-4" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedAttackScale == -4 ? 'bg-white' : 'bg-red-300'}  font-bold">-4</div>
+			<div data-scale="-5" class="rounded-full w-2 h-2 mr-3 {highlightedAttackScale == -5 ? 'bg-white' : 'bg-red-300'} "></div>
+			<div data-scale="-6" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedAttackScale == -6 ? 'bg-white' : 'bg-red-300'}  font-bold">-6</div>
+			<div data-scale="-7" class="rounded-full w-2 h-2 mr-3 {highlightedAttackScale == -7 ? 'bg-white' : 'bg-red-300'} "></div>
+			<div data-scale="-8" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedAttackScale == -8 ? 'bg-white' : 'bg-red-300'}  font-bold">-8</div>
+			<div data-scale="-9" class="rounded-full w-2 h-2 mr-3 {highlightedAttackScale == -9 ? 'bg-white' : 'bg-red-300'} "></div>
+			<div data-scale="-10" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedAttackScale == -10 ? 'bg-white' : 'bg-red-300'}  font-bold">-10</div>
+		</div>
+
+		<div class="attack-scale scale absolute right-2 flex-col w-10 h-[600px] translate-y-[-300px] justify-between items-end {showAttackScale ? 'flex' : 'hidden'}">
 			<div data-scale="10" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedAttackScale == 10 ? 'bg-white' : 'bg-red-300'} font-bold">10</div>
 			<div data-scale="9" class="rounded-full w-2 h-2 mr-3 {highlightedAttackScale == 9 ? 'bg-white' : 'bg-red-300'} "></div>
 			<div data-scale="8" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedAttackScale == 8 ? 'bg-white' : 'bg-red-300'}  font-bold">8</div>
@@ -329,7 +354,31 @@
 			on:input={e => highlightScale('money', e.target.value)}
 			on:change={e => saveMoney(e.target.value)}
 		/>
-		<div class="money-scale scale absolute right-4 flex-col w-10 h-[600px] translate-y-[-300px] justify-between items-end {showMoneyScale ? 'flex' : 'hidden'}">
+		<div class="money-scale scale absolute left-0 flex-col w-10 h-[600px] translate-y-[-300px] justify-between items-end {showMoneyScale ? 'flex' : 'hidden'}">
+			<div data-scale="10" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedMoneyScale == 10 ? 'bg-white' : 'bg-yellow-200'} font-bold">10</div>
+			<div data-scale="9" class="rounded-full w-2 h-2 mr-3 {highlightedMoneyScale == 9 ? 'bg-white' : 'bg-yellow-200'} "></div>
+			<div data-scale="8" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedMoneyScale == 8 ? 'bg-white' : 'bg-yellow-200'}  font-bold">8</div>
+			<div data-scale="7" class="rounded-full w-2 h-2 mr-3 {highlightedMoneyScale == 7 ? 'bg-white' : 'bg-yellow-200'} "></div>
+			<div data-scale="6" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedMoneyScale == 6 ? 'bg-white' : 'bg-yellow-200'}  font-bold">6</div>
+			<div data-scale="5" class="rounded-full w-2 h-2 mr-3 {highlightedMoneyScale == 5 ? 'bg-white' : 'bg-yellow-200'} "></div>
+			<div data-scale="4" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedMoneyScale == 4 ? 'bg-white' : 'bg-yellow-200'}  font-bold">4</div>
+			<div data-scale="3" class="rounded-full w-2 h-2 mr-3 {highlightedMoneyScale == 3 ? 'bg-white' : 'bg-yellow-200'} "></div>
+			<div data-scale="2" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedMoneyScale == 2 ? 'bg-white' : 'bg-yellow-200'}  font-bold">2</div>
+			<div data-scale="1" class="rounded-full w-2 h-2 mr-3 {highlightedMoneyScale == 1 ? 'bg-white' : 'bg-yellow-200'} "></div>
+			<div data-scale="0" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedMoneyScale == 0 ? 'bg-white' : 'bg-yellow-200'}  font-bold">0</div>
+			<div data-scale="-1" class="rounded-full w-2 h-2 mr-3 {highlightedMoneyScale == -1 ? 'bg-white' : 'bg-yellow-200'} "></div>
+			<div data-scale="-2" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedMoneyScale == -2 ? 'bg-white' : 'bg-yellow-200'}  font-bold">-2</div>
+			<div data-scale="-3" class="rounded-full w-2 h-2 mr-3 {highlightedMoneyScale == -3 ? 'bg-white' : 'bg-yellow-200'} "></div>
+			<div data-scale="-4" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedMoneyScale == -4 ? 'bg-white' : 'bg-yellow-200'}  font-bold">-4</div>
+			<div data-scale="-5" class="rounded-full w-2 h-2 mr-3 {highlightedMoneyScale == -5 ? 'bg-white' : 'bg-yellow-200'} "></div>
+			<div data-scale="-6" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedMoneyScale == -6 ? 'bg-white' : 'bg-yellow-200'}  font-bold">-6</div>
+			<div data-scale="-7" class="rounded-full w-2 h-2 mr-3 {highlightedMoneyScale == -7 ? 'bg-white' : 'bg-yellow-200'} "></div>
+			<div data-scale="-8" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedMoneyScale == -8 ? 'bg-white' : 'bg-yellow-200'}  font-bold">-8</div>
+			<div data-scale="-9" class="rounded-full w-2 h-2 mr-3 {highlightedMoneyScale == -9 ? 'bg-white' : 'bg-yellow-200'} "></div>
+			<div data-scale="-10" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedMoneyScale == -10 ? 'bg-white' : 'bg-yellow-200'}  font-bold">-10</div>
+		</div>
+
+		<div class="money-scale scale absolute right-2 flex-col w-10 h-[600px] translate-y-[-300px] justify-between items-end {showMoneyScale ? 'flex' : 'hidden'}">
 			<div data-scale="10" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedMoneyScale == 10 ? 'bg-white' : 'bg-yellow-200'} font-bold">10</div>
 			<div data-scale="9" class="rounded-full w-2 h-2 mr-3 {highlightedMoneyScale == 9 ? 'bg-white' : 'bg-yellow-200'} "></div>
 			<div data-scale="8" class="rounded-full w-8 h-8 flex justify-center items-center {highlightedMoneyScale == 8 ? 'bg-white' : 'bg-yellow-200'}  font-bold">8</div>

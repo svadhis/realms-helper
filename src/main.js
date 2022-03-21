@@ -6,7 +6,7 @@ const app = new App({
 		activePlayer: 1,
 		damage: 0,
 		money: 0,
-		players: 3,
+		players: 2,
 		initialHealth: 50,
 		maxTime: 0,
 		optionBoard: false
