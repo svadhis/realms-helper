@@ -19,4 +19,15 @@ window.addEventListener('contextmenu', function (e) {
 	e.preventDefault();
 }, false);
 
+/*Only needed for the controls*/
+var phone = document.getElementById("phone_1"),
+  iframe = document.getElementById("frame_1");
+
+/*View*/
+function updateView(view) {
+  if (view) {
+    phone.className = "phone view_" + view;
+  }
+}
+
 export default app;
