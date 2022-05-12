@@ -14,6 +14,7 @@ const app = new App({
 });
 
 navigator.wakeLock.request('screen');
+screen.orientation.lock('portrait');
 
 window.addEventListener('contextmenu', function (e) {
 	e.preventDefault();
